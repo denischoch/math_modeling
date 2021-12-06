@@ -1,14 +1,27 @@
 import matplotlib.pyplot as plt
-import decimal
 import numpy as np
 
-xmin = -20
-xmax = 20
-dx = 0.1
+def circle (radius=10):
+  x= np.arange(-2*radius,2*radius,0.1)
 
-xlist = np.around(np.arange(xmin, xmax, dx), decimals=4)
+  y =np.arange(-2*radius,2*radius,0.1)
+  X,Y = np.meshgrid(x,y)
+  fxy = X**2 + Y**2
+  plt.contour (X, Y, fxy, levels=[radius**2] )
+  plt.show()
 
-ylist = 1 / xlist
-
-plt.plot(xlist, ylist)
-plt.show()
+def circle2 (radius=10):
+  x= np.arange(-20*radius,20*radius,0.1)
+  y =np.arange(-20*radius,20*radius,0.1)
+  b = 2
+  a = 1
+  X,Y = np.meshgrid(x,y)
+  fxy = X**2/a**2 + Y**2/b**2 - 1
+  plt.contour (X, Y, fxy, levels=[radius**2] )
+  plt.axis('equal')
+  plt.show()
+n = int(input())
+if (n==1):
+  circle()
+elif (n==2):
+  circle2()
